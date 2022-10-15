@@ -22,23 +22,66 @@ scrollbary.config(command=tree.yview)
 scrollbary.pack(side=RIGHT, fill=Y)
 scrollbarx.config(command=tree.xview)
 scrollbarx.pack(side=BOTTOM, fill=X)
-tree.heading('Firstname', text="Firstname", anchor=W)
-tree.heading('Lastname', text="Lastname", anchor=W)
-tree.heading('Address', text="Address", anchor=W)
+tree.heading('Formatted', text="Formatted", anchor=W)
+tree.heading('Summary', text="Summary", anchor=W)
+tree.heading('Precip', text="Precip Type", anchor=W)
+
+tree.heading('Temperature', text="Temperature", anchor=W)
+tree.heading('AppHum', text="Apparent Humidity", anchor=W)
+tree.heading('Humidity', text="Humidity", anchor=W)
+
+tree.heading('Windsp', text="Wind Speed", anchor=W)
+tree.heading('WindBearing', text="Wind Bearing", anchor=W)
+tree.heading('Cloudcov', text="Cloud Cover", anchor=W)
+
+tree.heading('Pressure', text="Pressure", anchor=W)
+tree.heading('dSumm', text="Daily Summary", anchor=W)
+
 tree.column('#0', stretch=NO, minwidth=0, width=0)
 tree.column('#1', stretch=NO, minwidth=0, width=200)
 tree.column('#2', stretch=NO, minwidth=0, width=200)
 tree.column('#3', stretch=NO, minwidth=0, width=300)
+
+
+tree.column('#4', stretch=NO, minwidth=0, width=0)
+tree.column('#5', stretch=NO, minwidth=0, width=200)
+tree.column('#6', stretch=NO, minwidth=0, width=200)
+tree.column('#7', stretch=NO, minwidth=0, width=300)
+
+
+tree.column('#8', stretch=NO, minwidth=0, width=0)
+tree.column('#9', stretch=NO, minwidth=0, width=200)
+tree.column('#10', stretch=NO, minwidth=0, width=200)
+
+
 tree.pack()
 
 
-with open('test.csv') as f:
+with open('weatherHistory.csv') as f:
     reader = csv.DictReader(f, delimiter=',')
     for row in reader:
-        firstname = row['firstname']
-        lastname = row['lastname']
-        address = row['address']
-        tree.insert("", 0, values=(firstname, lastname, address))
+        Formatted = row['Formatted']
+        Summary = row['Summary']
+        Precip = row['Precip']
+        Temperature = row['Temperature']
+        AppHum = row['AppHum']
+        Humidity = row['Humidity']
+        Windsp = row['Windsp']
+        WindBearing = row['WindBearing']
+        Cloudcov = row['Cloudcov'] 
+        Pressure = row['Pressure']
+        dSum = row['dSum']        
+        
+        tree.insert("", 0, values=(Formatted,
+        Summary,
+        Precip ,Temperature ,
+        AppHum,
+        Humidity,
+        Windsp,
+        WindBearing,
+        Cloudcov, 
+        Pressure,
+        dSum))
         
         
         
